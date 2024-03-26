@@ -1,13 +1,15 @@
 package com.example.appdoctintuc.Activity;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -15,8 +17,9 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.example.appdoctintuc.Adapter.BaiBaoAdapter;
-import com.example.appdoctintuc.DBHandle;
+import com.example.appdoctintuc.DatabaseManager;
 import com.example.appdoctintuc.DetailActivity;
+import com.example.appdoctintuc.MainActivity;
 import com.example.appdoctintuc.R;
 import com.example.appdoctintuc.ThemBaiBaoActivity;
 import com.example.appdoctintuc.model.BaiBao;
@@ -27,11 +30,10 @@ import java.util.ArrayList;
 public class TheThaoActivity extends AppCompatActivity {
     ListView lvBaiBao;
     Button btnOpenNew;
-    ImageButton btnMore;
+    ImageButton imbBack;
     ArrayList<BaiBao> arrayListBaiBao;
     BaiBaoAdapter adapterBaiBao;
-    public static DBHandle database;
-
+    DatabaseManager database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,95 +42,86 @@ public class TheThaoActivity extends AppCompatActivity {
         addControls();
         addEventsOpen();
         xemchitiet();
-        goToCrud();
+        imbBack.setOnClickListener(NhanVaoNutBack());
 
-        // Các phương thức khởi tạo...
-        database = new DBHandle(this,"csdl_Do_An.db",null,1);
+        // Sử dụng DatabaseManager để lấy thể hiện cơ sở dữ liệu
+        database = DatabaseManager.getInstance(this); // Thay đổi ở đây
 
-        // Tạo bảng TheLoai
-        database.QueryData("CREATE TABLE IF NOT EXISTS TheLoai (\n" +
-                "idLoai INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
-                "tenTheLoai TEXT);\n");
+        // Lấy dữ liệu từ cơ sở dữ liệu và cập nhật ListView
+        loadDataFromDatabase();
+    }
 
-        // Tạo bảng BaiBao
-        database.QueryData("CREATE TABLE IF NOT EXISTS BaiBao (\n" +
-                "idBaiBao INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
-                "tieudeBaiBao TEXT,\n" +
-                "noidungBaiBao TEXT,\n" +
-                "idLoai INTEGER,\n" +
-                "anhBaiBao BLOB,\n" +
-                "FOREIGN KEY (idLoai) REFERENCES TheLoai(idLoai));\n");
-
-        // Tạo bảng User
-        database.QueryData("CREATE TABLE IF NOT EXISTS User (\n" +
-                "idUser INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
-                "tenUser TEXT,\n" +
-                "taikhoanUser TEXT,\n" +
-                "matkhauUser TEXT,\n" +
-                "emailUser TEXT,\n" +
-                "namsinhUser TEXT,\n" +
-                "gioitinhUser TEXT);\n");
-
-        // Tạo bảng LuuTru
-        database.QueryData("CREATE TABLE IF NOT EXISTS LuuTru (\n" +
-                "idLuuTru INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
-                "idUser INTEGER,\n" +
-                "idBaiBao INTEGER,\n" +
-                "FOREIGN KEY (idUser) REFERENCES User(idUser),\n" +
-                "FOREIGN KEY (idBaiBao) REFERENCES BaiBao(idBaiBao));\n");
-
-        // Tạo bảng BinhLuan
-        database.QueryData("CREATE TABLE IF NOT EXISTS BinhLuan (\n" +
-                "idBinhLuan INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
-                "idUser INTEGER,\n" +
-                "idBaiBao INTEGER,\n" +
-                "noidungBinhLuan TEXT,\n" +
-                "ngayBinhLuan DATE,\n" +
-                "FOREIGN KEY (idUser) REFERENCES User(idUser),\n" +
-                "FOREIGN KEY (idBaiBao) REFERENCES BaiBao(idBaiBao));\n");
-        Cursor cursor = database.GetData("SELECT * FROM BaiBao");
-        while (cursor.moveToNext()) {
-            arrayListBaiBao.add(new BaiBao(
-                    cursor.getInt(0),
-                    cursor.getString(1),
-                    cursor.getString(2),
-                    cursor.getInt(3),
-                    cursor.getBlob(4)
-            ));
+    private void loadDataFromDatabase() {
+        Cursor cursor = null;
+        try {
+            cursor = database.GetData("SELECT * FROM BaiBao"); // Thay đổi ở đây
+            arrayListBaiBao.clear();
+            while (cursor.moveToNext()) {
+                arrayListBaiBao.add(new BaiBao(
+                        cursor.getInt(0),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getInt(3),
+                        cursor.getBlob(4)
+                ));
+            }
+            adapterBaiBao.notifyDataSetChanged();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
-        adapterBaiBao.notifyDataSetChanged();
-
     }
 
-    private void goToCrud() {
 
-    }
+
 
 
     public void xemchitiet() {
         lvBaiBao.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                BaiBao baibao = (BaiBao) parent.getItemAtPosition(position);
+                final CharSequence[] items = {"Xem chi tiết", "Sửa bài báo hoặc Xóa bài báo"};
+                AlertDialog.Builder builder = new AlertDialog.Builder(TheThaoActivity.this);
+                builder.setTitle("Chọn hành động");
+                builder.setItems(items, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int item) {
+                        BaiBao baibao = (BaiBao) parent.getItemAtPosition(position);
+                        // Nén hình ảnh trước khi chuyển
+                        Bitmap bitmap = BitmapFactory.decodeByteArray(baibao.getAnhBaiBao(), 0, baibao.getAnhBaiBao().length);
+                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, stream);
+                        byte[] byteArray = stream.toByteArray();
+                        // Tạo Intent để mở Activity mới
+                        switch (item) {
+                            case 0: // Xem chi tiết
 
-                // Nén hình ảnh trước khi chuyển
-                Bitmap bitmap = BitmapFactory.decodeByteArray(baibao.getAnhBaiBao(), 0, baibao.getAnhBaiBao().length);
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, stream);
-                byte[] byteArray = stream.toByteArray();
-
-                // Tạo Intent để mở Activity mới
-                Intent intent = new Intent(TheThaoActivity.this, DetailActivity.class);
-                // Truyền dữ liệu sang Activity mới
-                intent.putExtra("TieuDe", baibao.getTenBaiBao());
-                intent.putExtra("NoiDung", baibao.getNdBaiBao());
-                intent.putExtra("AnhBaiBao", byteArray); // Chuyển hình ảnh đã nén
-                // Khởi chạy Activity mới
-                startActivity(intent);
+                                Intent intent = new Intent(TheThaoActivity.this, DetailActivity.class);
+                                // Truyền dữ liệu sang Activity mới
+                                intent.putExtra("idBaiBao", baibao.getIdBaiBao());
+                                intent.putExtra("TieuDe", baibao.getTenBaiBao());
+                                intent.putExtra("NoiDung", baibao.getNdBaiBao());
+                                intent.putExtra("AnhBaiBao", byteArray); // Chuyển hình ảnh đã nén
+                                // Khởi chạy Activity mới
+                                startActivity(intent);
+                                break;
+                            case 1: // Sửa bài báo
+                                // Mã để sửa bài báo
+                                Intent intent1 = new Intent(TheThaoActivity.this, SuavaXoaActivity.class);
+                                intent1.putExtra("idBaiBao", baibao.getIdBaiBao());
+                                intent1.putExtra("TieuDe", baibao.getTenBaiBao());
+                                intent1.putExtra("NoiDung", baibao.getNdBaiBao());
+                                intent1.putExtra("AnhBaiBao", byteArray); // Chuyển hình ảnh đã nén
+                                startActivity(intent1);
+                                break;
+                        }
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         });
     }
-
 
 
     private void addEventsOpen() {
@@ -148,7 +141,21 @@ public class TheThaoActivity extends AppCompatActivity {
         arrayListBaiBao = new ArrayList<>();
         adapterBaiBao = new BaiBaoAdapter(this,R.layout.layout_item,arrayListBaiBao);
         lvBaiBao.setAdapter(adapterBaiBao);
+        imbBack = findViewById(R.id.imbBack);
+
     }
 
+    @NonNull
+    private  View.OnClickListener NhanVaoNutBack() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TheThaoActivity.this, MainActivity.class);
+                startActivity(intent);
+                // Kết thúc (finish) Activity hiện tại nếu bạn muốn
+                finish();
+            }
+        };
+    }
 
 }

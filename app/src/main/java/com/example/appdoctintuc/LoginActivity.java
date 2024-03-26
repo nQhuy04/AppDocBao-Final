@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                 String password = edPasswordC.getText().toString().trim();
                 if(checkUsername(username) && checkPassword(password))
                 {
-                    Intent i = new Intent(LoginActivity.this, HomeActivity.class);
+                    Intent i = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(i);
                 }
             }

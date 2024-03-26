@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.example.appdoctintuc.LoginActivity;
+import com.example.appdoctintuc.MainActivity;
 import com.example.appdoctintuc.R;
 import com.example.appdoctintuc.RSS.MainActivityRSS;
 import com.example.appdoctintuc.fragment.HomeFragment;
@@ -20,7 +21,9 @@ public class GiaoDucActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_giao_duc);
+        imbBack = findViewById(R.id.imbBack);
         imbBack.setOnClickListener(NhanVaoNutBack());
+
     }
 
     @NonNull
@@ -28,7 +31,7 @@ public class GiaoDucActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(GiaoDucActivity.this, HomeFragment.class);
+                Intent intent = new Intent(GiaoDucActivity.this, MainActivity.class);
                 startActivity(intent);
                 // Kết thúc (finish) Activity hiện tại nếu bạn muốn
                 finish();

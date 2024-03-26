@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 
@@ -48,7 +49,7 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        TextView thethao = view.findViewById(R.id.thethao_card);
+        CardView thethao = (CardView) view.findViewById(R.id.thethao_card);
         thethao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +57,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        TextView thegioi = view.findViewById(R.id.thegioi_card);
+        CardView thegioi = (CardView) view.findViewById(R.id.thegioi_card);
         thegioi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,40 +65,40 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        TextView thoisu = view.findViewById(R.id.thoisu_card);
-        thegioi.setOnClickListener(new View.OnClickListener() {
+        CardView thoisu = (CardView) view.findViewById(R.id.thoisu_card);
+        thoisu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NhanVaoThoiSu();
             }
         });
 
-        TextView khoahoc = view.findViewById(R.id.khoahoc_card);
-        thegioi.setOnClickListener(new View.OnClickListener() {
+        CardView khoahoc = (CardView) view.findViewById(R.id.khoahoc_card);
+        khoahoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NhanVaoKhoaHoc();
             }
         });
 
-        TextView kinhdoanh = view.findViewById(R.id.kinhdoanh_card);
-        thegioi.setOnClickListener(new View.OnClickListener() {
+        CardView kinhdoanh = (CardView) view.findViewById(R.id.kinhdoanh_card);
+        kinhdoanh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NhanVaoKinhDoanh();
             }
         });
 
-        TextView giaoduc = view.findViewById(R.id.giaoduc_card);
-        thegioi.setOnClickListener(new View.OnClickListener() {
+        CardView giaoduc = (CardView) view.findViewById(R.id.giaoduc_card);
+        giaoduc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NhanVaoGiaoDuc();
             }
         });
 
-        TextView suckhoe = view.findViewById(R.id.suckhoe_card);
-        thegioi.setOnClickListener(new View.OnClickListener() {
+        CardView suckhoe = (CardView) view.findViewById(R.id.suckhoe_card);
+        suckhoe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NhanVaoSucKhoe();

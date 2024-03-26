@@ -15,6 +15,9 @@
         android:theme="@style/Theme.AppDocTinTuc"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.SuavaXoaActivity"
+            android:exported="false" />
+        <activity
             android:name=".ThemBaiBaoActivity"
             android:exported="false" />
         <activity
@@ -40,17 +43,15 @@
             android:exported="false" />
         <activity
             android:name=".Activity.TheThaoActivity"
-            android:exported="true" >
+            android:exported="true"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-
         </activity>
         <activity
             android:name=".Home.DetailRSSActivity"
@@ -63,7 +64,7 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true" />
+            android:exported="true"></activity>
         <activity
             android:name=".RSS.MainActivityRSS"
             android:exported="true" />

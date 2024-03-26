@@ -33,7 +33,15 @@ public class ThemBaiBaoActivity extends AppCompatActivity {
         addControls();
         addEventsOpenIMGLibrary();
         addEventsThemBaiBao();
-
+        Event();
+    }
+    private void Event(){
+        btnQuayLai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void addEventsThemBaiBao() {
@@ -45,13 +53,13 @@ public class ThemBaiBaoActivity extends AppCompatActivity {
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.PNG,100,byteArrayOutputStream);
                 byte[]hinh = byteArrayOutputStream.toByteArray();
-                TheThaoActivity.database.InsertRecord(
+                DatabaseManager.getInstance(ThemBaiBaoActivity.this).InsertRecord(
                         edtTieuDe.getText().toString().trim(),
                         edtNoiDungBaiBao.getText().toString().trim(),
                         hinh
                 );
                 Toast.makeText(ThemBaiBaoActivity.this, "Insert Successfull", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(ThemBaiBaoActivity.this, TheThaoActivity.class));
+                finish();
             }
         });
     }

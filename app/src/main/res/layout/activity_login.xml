@@ -8,19 +8,11 @@
     android:orientation="vertical"
     tools:context=".LoginActivity">
 
-    <ImageButton
-        android:id="@+id/imbBack"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginEnd="328dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/baseline_arrow_back_24" />
+
 
     <ImageView
+        android:layout_marginTop="30dp"
         android:id="@+id/imglogo"
-
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_gravity="center"

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.example.appdoctintuc.MainActivity;
 import com.example.appdoctintuc.R;
 import com.example.appdoctintuc.fragment.HomeFragment;
 
@@ -18,7 +19,9 @@ public class SucKhoeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suc_khoe);
+        imbBack = findViewById(R.id.imbBack);
         imbBack.setOnClickListener(NhanVaoNutBack());
+
     }
 
     @NonNull
@@ -26,7 +29,7 @@ public class SucKhoeActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SucKhoeActivity.this, HomeFragment.class);
+                Intent intent = new Intent(SucKhoeActivity.this, MainActivity.class);
                 startActivity(intent);
                 // Kết thúc (finish) Activity hiện tại nếu bạn muốn
                 finish();

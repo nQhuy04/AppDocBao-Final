@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.example.appdoctintuc.MainActivity;
 import com.example.appdoctintuc.R;
 import com.example.appdoctintuc.fragment.HomeFragment;
 
@@ -18,6 +19,7 @@ public class ThoiSuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thoi_su);
+        imbBack = findViewById(R.id.imbBack);
         imbBack.setOnClickListener(NhanVaoNutBack());
     }
 
@@ -26,7 +28,7 @@ public class ThoiSuActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ThoiSuActivity.this, HomeFragment.class);
+                Intent intent = new Intent(ThoiSuActivity.this, MainActivity.class);
                 startActivity(intent);
                 // Kết thúc (finish) Activity hiện tại nếu bạn muốn
                 finish();
