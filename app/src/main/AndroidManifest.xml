@@ -15,10 +15,31 @@
         android:theme="@style/Theme.AppDocTinTuc"
         tools:targetApi="31">
         <activity
-            android:name=".RegisterActivity"
+            android:name=".ThemBaiBaoActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".DetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.SucKhoeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.GiaoDucActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.KinhDoanhActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.KhoaHocActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.ThoiSuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.TheGioiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.TheThaoActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,6 +52,21 @@
             android:exported="true">
 
         </activity>
+        <activity
+            android:name=".Home.DetailRSSActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Home.HomeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RSS.MainActivityRSS"
+            android:exported="true" />
     </application>
 
 </manifest>

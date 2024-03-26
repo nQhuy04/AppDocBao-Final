@@ -1,4 +1,4 @@
-package com.example.appdoctintuc;
+package com.example.appdoctintuc.RSS;
 import android.graphics.Bitmap;
 
 public class List {

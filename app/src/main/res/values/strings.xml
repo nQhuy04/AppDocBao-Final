@@ -1,3 +1,66 @@
 <resources>
     <string name="app_name">AppDocTinTuc</string>
+
+    <string name="Thể_Thao">
+        Trong ngày thi thứ tư, Anh Tuấn toàn thắng Bernie Regalario (Philippines), Ruiz (Tây Ban Nha) và Ko Ping
+        Chung (Đài Loan). Trong đó, hai trận thắng sau đều có tỷ số 5-4. Kết quả giúp cơ thủ số hai Việt Nam lần
+        đầu vào Top 10 giải đấu, trước ngày thi cuối quyết định.
+    </string>
+
+    <string name="Thời_Sự">
+        TP HCMGần 200 hộ dân cạnh đường Võ Văn Kiệt, quận 6, suốt 20 năm sống trong những ngôi nhà xuống cấp,
+        ô nhiễm, không thể sửa chữa, di dời do vướng dự án "treo".
+
+        Trưa 20/3, bà Nguyễn Thị Thanh Vân, 64 tuổi, ngồi trước căn nhà rộng 21 m2, nóng hầm hập.
+        Căn hộ cấp 4 cách đường Võ Văn Kiệt, đoạn qua cầu Lò Gốm chưa tới chục mét nhưng chỉ có đường đất
+        rộng 1,5 m dẫn vào. Bên trong nhà các bức tường nhiều vết nứt nẻ từ lâu được dựng thêm các thanh sắt
+        chống đỡ nhưng không thể xây mới vì thuộc vùng giải toả.
+    </string>
+
+    <string name="Thế_Giới">
+        Phó chủ tịch Duma Quốc gia nói quân đội Nga sẽ hạ tất cả binh sĩ được Pháp triển khai đến Ukraine,
+        nếu Paris quyết định làm điều này.
+
+        "Hiện có khoảng 13.000 lính đánh thuê nước ngoài ở Ukraine, trong đó có 367 công dân Pháp.
+        147 người Pháp đã thiệt mạng", Phó chủ tịch Duma Quốc gia (tức Hạ viện Nga) Pyotr Tolstoy cho
+        biết hôm 21/3.
+    </string>
+
+    <string name="Sức_Khỏe">
+        "Quá nguy hiểm", bác sĩ Nguyễn Quang Bảy, Trưởng khoa Nội tiết - Đái tháo đường, Bệnh viện Bạch Mai,
+        đánh giá thuốc này, giải thích bệnh nhân tự ý dùng thuốc, không biết căn nguyên gây bệnh, chỉ điều
+        trị triệu chứng nên không triệt để, bệnh dễ tái phát.
+    </string>
+
+    <string name="Khoa_Học">
+        Năm 1987, trong chuyến dã ngoại tới London, một thợ làm đồng hồ tập sự tình cờ bắt gặp món đồ hiếm ở cửa
+        hàng đồ cổ. Bị che khuất trong chiếc hộp chứa đầy đồ vật linh tinh bằng kim loại cũ kỹ là một chiếc đồng
+        hồ thú vị. Quả cầu bằng đồng nhỏ này có thể mở ra, để lộ hình bán cầu nhỏ hơn ở bên trong. Ở mặt trên
+        của hình bán cầu là đĩa số khắc chữ số La Mã và Arab, đặc điểm của thiết kế đồng hồ nổi tiếng rất thịnh
+        hành ở Đức thế kỷ 16.
+    </string>
+
+    <string name="Kinh_Doanh">
+        Trong số 5,9 triệu tấn carbon còn dư, Bộ Nông nghiệp muốn chuyển nhượng 1 triệu tấn cho Ngân hàng Thế
+        giới, số còn lại đấu giá thông qua sàn giao dịch quốc tế.
+
+        Thông tin trên vừa được Bộ Nông nghiệp và Phát triển Nông thôn nêu trong báo cáo gửi Thủ tướng về tình
+        hình triển khai thỏa thuận chi trả giảm phát thải khí nhà kính (ERPA) vùng Bắc Trung Bộ và đề̀ xuất chuyển
+        nhượng lượng giảm phát thải khí nhà kính còn dư giai đoạn 2018-2019.
+    </string>
+
+    <string name="Giáo_Dục">
+        Theo báo cáo 2024 do ISC Research công bố hồi tháng 2, toàn thế giới hiện có hơn 14.000 trường quốc tế
+        với 6,9 triệu học sinh, doanh thu 60,9 tỷ USD từ học phí mỗi năm. Số giáo viên dạy trường quốc tế là hơn
+        664.000 người, tăng 13% so với 5 năm trước.
+
+        Đứng đầu về tốc độ tăng trưởng số lượng là Ấn Độ. Số trường quốc tế ở nước này hiện là 923, tăng 10% so
+        với năm 2022. Theo sau là Các tiểu vương quốc Arab thống nhất (UAE) tăng 9% lên 784 trường. Trung Quốc
+        đứng thứ ba, tăng 6%, đạt 1.106 trường. Việt Nam và Nhật Bản cùng tăng 5%, nhưng báo cáo không nêu rõ
+        số trường tại hai quốc gia này.
+    </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>

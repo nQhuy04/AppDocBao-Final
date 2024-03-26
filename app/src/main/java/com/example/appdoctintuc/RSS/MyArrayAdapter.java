@@ -1,4 +1,4 @@
-package com.example.appdoctintuc;
+package com.example.appdoctintuc.RSS;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.appdoctintuc.R;
 
 import java.util.ArrayList;
 

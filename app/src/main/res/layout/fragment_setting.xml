@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.SettingFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cài Đặt"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="30dp"/>
+
+        <TextView
+            android:id="@+id/settings_item_info"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:clickable="true"
+            android:drawableStart="@drawable/baseline_account_circle_24"
+            android:drawableEnd="@drawable/right_arrow"
+            android:drawablePadding="13dp"
+            android:gravity="center_vertical"
+            android:text="Hồ Sơ Cá Nhân"
+            android:textSize="13dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/light_grey"
+            android:layout_marginVertical="13dp"/>
+
+        <TextView
+            android:id="@+id/settings_item_me"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:clickable="true"
+            android:drawableStart="@drawable/question_mark"
+            android:drawableEnd="@drawable/right_arrow"
+            android:drawablePadding="13dp"
+            android:gravity="center_vertical"
+            android:text="Về Chúng Tôi"
+            android:textSize="13dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/light_grey"
+            android:layout_marginVertical="13dp"/>
+
+        <TextView
+            android:id="@+id/settings_item_logout"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:clickable="true"
+            android:drawableStart="@drawable/ic_baseline_exit_to_app_24"
+            android:drawableEnd="@drawable/right_arrow"
+            android:drawablePadding="13dp"
+            android:gravity="center_vertical"
+            android:text="Đăng Xuất"
+            android:textSize="13dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/light_grey"
+            android:layout_marginVertical="13dp"/>
+    </LinearLayout>
+
+
+</FrameLayout>
